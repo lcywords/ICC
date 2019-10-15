@@ -1,6 +1,6 @@
-# ICC framework
+# ICC Framework
 
-## 1. front
+## 1. Front
 
 * Angular:
 ~~~~
