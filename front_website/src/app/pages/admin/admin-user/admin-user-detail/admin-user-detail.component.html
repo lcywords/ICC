@@ -1,0 +1,164 @@
+<div class="big-view">
+  <div class="menu">
+    <div class="info-title">
+      <p class="info-title-after">基本信息</p>
+    </div>
+    <div nz-row class="info-area">
+      <div nz-col nzSpan="12">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">用户KEY:</p>
+          </div>
+          <div class="child">
+            <p class="info-item">{{userInfo?.user_key_code}}</p>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">用户密码:</p>
+          </div>
+          <div class="info-password">
+            <p>******</p>
+          </div>
+          <div class="child">
+            <button nz-button nzType="primary" (click)="changeUserPassword()">修改</button>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">用户名:</p>
+          </div>
+          <div class="child">
+            <p class="info-item">{{userInfo?.user_name}}</p>
+            <!-- <input nz-input placeholder="" [(ngModel)]="userInfo.user_name" /> -->
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">性别:</p>
+          </div>
+          <div class="child">
+            <p class="info-item">{{userInfo?.user_sex}}</p>
+            <!-- <input nz-input placeholder="" [(ngModel)]="userInfo.user_sex" /> -->
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">用户电话:</p>
+          </div>
+          <div class="child">
+            <p class="info-item">{{userInfo?.user_mobile}}</p>
+            <!-- <input nz-input placeholder="" [(ngModel)]="userInfo.user_mobile" /> -->
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">用户类型:</p>
+          </div>
+          <div class="child">
+            <p class="info-item">{{userInfo?.user_type}}</p>
+            <!-- <input nz-input placeholder="" [(ngModel)]="userInfo.user_type" /> -->
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">所属机构:</p>
+          </div>
+          <div class="child">
+            <p class="info-item">{{userInfo?.institution_name}}</p>
+            <!-- <input nz-input placeholder="" [(ngModel)]="userInfo.institution_name" /> -->
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">生年月日:</p>
+          </div>
+          <div class="child">
+            <p class="info-item">{{userInfo?.user_birth_date}}</p>
+            <!-- <input nz-input placeholder="" [(ngModel)]="userInfo.user_birth_date" /> -->
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="24">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">备注:</p>
+          </div>
+          <div class="child">
+            <p class="info-item">{{userInfo?.description}}</p>
+            <!-- <input nz-input placeholder="" [(ngModel)]="userInfo.description" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="info-title">
+      <p class="info-title-after">产品信息</p>
+    </div>
+    <div class="nav-right">
+      <div class="list-container">
+        <nz-table #rowSelectionTable nzBordered [nzData]="dataKeys">
+          <thead>
+            <tr class="institution-table-head">
+              <th class="first-head-th" nzWidth="25%">Product Name</th>
+              <th nzWidth="25%">Own Product</th>
+              <th>Authority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="institution-table-body" *ngFor="let item of rowSelectionTable.data">
+              <td>{{ displayUserProductMap[item] }}</td>
+              <td nzShowCheckbox [(nzChecked)]="userProductMap[item]"></td>
+              <td>
+                <div *ngIf="nodes[item] && userProductMap [item]">
+                  <div *ngFor="let control of nodes[item]">
+                    <label nz-checkbox [(ngModel)]="control.value">{{control.key}}</label>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+      <div>
+        <button nz-button nzType="primary" (click)="updateProductData()" class="button-area">提交</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<nz-modal style="padding-bottom: 10px;" [(nzVisible)]="isShowInstitutionModal" nzTitle="修改密码"
+  (nzOnCancel)="institutionCancelModal()" [nzFooter]="null" class="nz-model" (nzOkDisabled)='false'>
+  <form nz-form [formGroup]='institutionForm' (ngSubmit)='institutionOkModal()'>
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]='6'>新密码</nz-form-label>
+      <nz-form-control [nzSpan]='15' nzErrorTip='请输入新密码'>
+        <input nz-input formControlName='newPassword' id='newPassword' placeholder="请输入机构名称" />
+      </nz-form-control>
+    </nz-form-item>
+    <p style="height: 1px; background-color: #e8e8e8; margin: 20px -24px 10px -24px;"></p>
+    <nz-form-item>
+      <nz-form-control>
+        <button style="float: right; margin-bottom: 10px;" nz-button nzType="primary">确定</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+</nz-modal>

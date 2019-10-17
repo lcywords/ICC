@@ -1,0 +1,144 @@
+.login-view{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	position: relative;
+	.login-form {
+		width: 350px;
+		position: absolute;
+		/* left: 1286px; */
+		right: calc(~"(50% - 175px)");
+		top: 25.6%;
+		// box-shadow: 0 35px 16px -26px rgb(15, 15, 15);
+		.title {
+			font-size: 2.0rem;
+			margin-bottom: 10px;
+			font-weight: 600;
+		}
+		.assist-font {
+			color: #a4abb3;
+			margin-bottom: 0;
+		}
+		form {
+			width: 320px;
+			position: absolute;
+			left: 15px;
+			z-index: 2;
+			margin-top: 30px;
+
+			input {height: 50px;}
+
+			.login-form-forgot {
+				margin-right: 10px;
+				float: right;
+			}
+
+			.remember {
+				float: left;
+				margin-left: 10px;
+			}
+	
+			input[type="submit"] {
+				width: 100%;
+				height: 50px;
+				border: none;
+				border-radius: 5px;
+				color: #ffffff;
+				padding: 0;
+				font-size: 1.4rem;
+				// font-weight: 700;
+				background-color: #20c997;
+				margin-top: 30px;
+				cursor: pointer;
+				// &:hover {
+				// 	color: #000000;
+				// }
+				&[disabled] {
+					background-color: #cfcfcf;
+					cursor: not-allowed;
+					box-shadow: none;
+					opacity: .65;
+				}
+			}
+		}
+		.pwd-control {
+			width: 282px;
+			height: 30px;
+			line-height: 30px;
+			position: absolute;
+			left: 35px;
+			top: 300px;
+			color: #ffffff;
+			z-index: 2;
+			/* outline: 1px solid red; */
+			input[type="checkbox"] {
+				width: 20px;
+				height: 20px;
+				margin-top: 5px;
+				margin-right: 2px;
+			}
+			#remember-pwd {
+				font-size: 1.6rem;
+				vertical-align: super;
+			}
+			a {
+				color: #ffffff;
+				text-decoration: none;
+				width: auto;
+				height: auto;
+				font-size: 1.6rem;
+				font-family: Arial, Helvetica, sans-serif;
+				float: right;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+.login-btn{
+	width: 300px; height: 40px; border: none; border-radius: 5px; color: #ffffff; padding: 0; font-size: 1.6rem; 
+	background-color: #f58b3d;
+}
+.login-btn:hover {
+	background-color: #f58b3d;
+	color: #000000;
+}
+.login-btn:focus{
+	background-color: #f58b3d;
+	color: #000000;
+}
+
+.ui-float-label{
+	display: block;
+	position: relative;
+}
+.ui-float-label label{
+	font-weight: 400;
+	position: absolute;
+	pointer-events: none;
+	left: .25em;
+	top: 50%;
+	margin-top: -.5em;
+	transition: all .3s ease;
+	-moz-transition: .3s ease all;
+	-webkit-transition: all .3s ease;
+	color: #898989;
+	line-height: 1;
+}
+
+.sign-up-text {
+	margin-top: 30px;
+}
+
+
+
+
+
+

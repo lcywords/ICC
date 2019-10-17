@@ -1,0 +1,41 @@
+<div class="user-list">
+  <div class="nav-right">
+    <div class="btn-div">
+      <button class="btn-style" nz-button nzType="primary" (click)="addUserGroup()">Add User Group</button>
+      <!-- <button class="btn-style-right" nz-button nzType="primary"
+        (click)="changeDisplayWay()">{{isTreeDisplay ? 'Table Diaplay': 'Tree Display'}}</button> -->
+    </div>
+    <div class="list-container">
+      <nz-table #basicTable [nzData]="dataList" nzBordered="true" *ngIf="!isTreeDisplay" [nzScroll]="{ x: '600px' }">
+        <thead>
+          <tr class="institution-table-head">
+            <th class="table150">组名</th>
+            <th class="table150">组ID</th>
+            <th class="table150">管理员ID</th>
+            <th class="table150">详情</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="institution-table-body" *ngFor="let data of basicTable.data">
+            <td class="table150">{{data?.name}}</td>
+            <td class="table150">{{data?._id}}</td>
+            <td class="table150">{{data?.manager}}</td>
+            <td class="table150">
+              <!-- <button class="rt-btn rt-btn-sm" (click)="update(data)">编辑</button>
+                <button class="rt-btn rt-btn-sm" (click)="showDeleteConfirm(data)">删除</button> -->
+              <span><a (click)="update(data)">编辑</a></span>
+              <span class="empty-span">|</span>
+              <span><a (click)="showDeleteConfirm(data)"> 删除</a></span>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <div style="background-color: white; height: 100%; overflow-x: auto" *ngIf="isTreeDisplay">
+        <div style="background-color: #e9ebee; height: 40px; text-align: center">
+          <p style="padding-top: 10px">机构索引</p>
+        </div>
+        <nz-tree [nzData]="nodes" nzShowLine nzDraggable nzBlockNode (nzClick)="nzEvent($event)"> </nz-tree>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<nz-sider
+  nzCollapsible
+  [nzBreakpoint]="'lg'"
+  [nzCollapsedWidth]="0"
+>
+  <div class="logo">ICC Projrct</div>
+  <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="false">
+    <!-- <li nz-menu-item *ngFor="let item of nav; let i = index" (click)="gotoMenu(i)">
+        <i nz-icon nzType="item.type"></i>
+        <span>{{item.name}}</span>
+    </li> -->
+    <li nz-menu-item nzSelected (click)="gotoMenu(0)">
+      <span><i nz-icon type="dashboard"></i><span class="nav-text">Dashboard</span></span>
+    </li>
+    <li nz-menu-item nz-menu-item (click)="gotoMenu(1)">
+      <span><i nz-icon type="bank"></i><span class="nav-text">Institutions</span></span>
+    </li>
+    <li nz-menu-item nz-menu-item (click)="gotoMenu(2)">
+      <span><i nz-icon type="user"></i><span class="nav-text">Users</span></span>
+    </li>
+    <li nz-menu-item nz-menu-item (click)="gotoMenu(3)">
+      <span><i nz-icon type="user-add"></i><span class="nav-text">Experts</span></span>
+    </li>
+    <li nz-menu-item nz-menu-item (click)="gotoMenu(4)">
+      <span><i nz-icon type="team"></i><span class="nav-text">UserGroup</span></span>
+    </li>
+  </ul>
+</nz-sider>
+

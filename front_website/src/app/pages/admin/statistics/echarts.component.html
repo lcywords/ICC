@@ -1,0 +1,64 @@
+<!-- <div class="user-list"> -->
+    <div class="nav-right">
+        <div class="flex-row-div-title">
+            <div class="left-flex-item">
+                <nz-form-item class="form-item">
+                    <label class="form-label">Active user</label>
+                    <nz-form-control class="form-control">
+                        <nz-select class="nz-select-style"  [(ngModel)]="selectValue1" name="stages" nzPlaceHolder="请选择" (ngModelChange)="onChange(1)">
+                            <nz-option *ngFor="let item of selectList1" [nzValue]="item.value" [nzLabel]="item.value">
+                            </nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div class="right-flex-item">
+                <nz-form-item class="form-item">
+                    <label class="form-label">New user</label>
+                    <nz-form-control class="form-control">
+                        <nz-select class="nz-select-style" [(ngModel)]="selectValue2" name="plan" nzPlaceHolder="请选择" (ngModelChange)="onChange(2)">
+                            <nz-option class="nz-select-option-style" *ngFor="let item of selectList2" [nzValue]="item.value" [nzLabel]="item.value">
+                            </nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+        <div class="container">
+            <div class="flex-row-div">
+                <div class="left-flex-item echarts-style" echarts #charts1 [options]="linkoption1" [loading]="showloading"></div>
+                <div class="right-flex-item echarts-style" echarts #charts2 [options]="linkoption2" [loading]="showloading"></div>
+            </div>
+        </div>
+        <div class="flex-row-div-title">
+            <div class="left-flex-item">
+                <nz-form-item class="form-item">
+                    <label class="form-label">Total patient</label>
+                    <nz-form-control class="form-control">
+                        <nz-select class="nz-select-style"  [(ngModel)]="selectValue3" name="stages" nzPlaceHolder="请选择" (ngModelChange)="onChange(3)">
+                            <nz-option *ngFor="let item of selectList3" [nzValue]="item.value" [nzLabel]="item.value">
+                            </nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div class="right-flex-item">
+                <nz-form-item class="form-item">
+                    <label class="form-label">New patient</label>
+                    <nz-form-control class="form-control">
+                        <nz-select class="nz-select-style"  [(ngModel)]="selectValue4" name="plan" nzPlaceHolder="请选择" (ngModelChange)="onChange(4)">
+                            <nz-option *ngFor="let item of selectList4" [nzValue]="item.value" [nzLabel]="item.value">
+                            </nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+        <div class="container">
+            <div class="flex-row-div">
+                <div class="left-flex-item echarts-style" echarts #charts3 [options]="linkoption3" [loading]="showloading"></div>
+                <div class="right-flex-item echarts-style" echarts #charts4 [options]="linkoption4" [loading]="showloading"></div>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->

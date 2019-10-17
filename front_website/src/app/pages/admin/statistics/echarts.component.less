@@ -1,0 +1,123 @@
+// .user-list {
+    .nav-right {
+        width: 100%;
+        height: 100%;
+        // overflow-y: auto;
+        .flex-row-div-title{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            .left-flex-item{
+                flex: 1;
+                background-color: #ffffff;
+            }
+            .right-flex-item{
+                flex: 1;
+                margin-left: 20px;
+                background-color: #ffffff;
+            }
+        }
+        .flex-row-div{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding-right: 0px;
+            .left-flex-item{
+                width: calc(50% - 10px);
+                background-color: #ffffff;
+            }
+            .right-flex-item{
+                width: calc(50% - 10px);
+                margin-left: 20px;
+                background-color: #ffffff;
+            }
+            .echarts-style{
+                min-height: 400px;
+                height: 100%;
+            }
+        }
+        .form-item{
+            color: #000;
+            border-bottom: #dfe2e9 1px solid;
+            height: 60px;
+            text-align: center;
+            padding-right: 20px;
+            .form-label{
+                text-align: left;
+                padding-left: 10px;
+                font-size: 18px;
+                line-height: 60px;
+                width: 30%;
+                display: inline-block;
+                label{
+                    color: #000 !important;
+                }
+            }
+            .form-control{
+                text-align: left;
+                height: 50px;
+                line-height: 50px;
+                margin-top: 5px;
+                width: 70%;
+                display: inline-block;
+                border: none !important;
+                box-shadow: none !important;
+                .nz-select-style{
+                    width: 100%;
+                    line-height: 50px;
+                    color: #000;
+                    .nz-select-option-style{
+                        border-color: #E9EBEE !important;
+                        box-shadow: none !important;
+                        background-color: #ffffff !important;
+                    }
+                }
+            }
+        }
+        // border: 1px solid #242424;
+        .container{
+            display: flex;
+            flex-flow:column nowrap;
+            width: 100%;/*任意改变长宽*/
+            margin-bottom: 20px;
+            background:#E9EBEE;
+            .echarts-item{
+                flex:1 1 0;/*元素弹性*/
+                background: #ffffff;
+            }
+    
+        }
+        
+        .parent{
+            display: flex;
+             flex-flow:row nowrap;
+            flex:1 1 0;/*元素弹性*/
+            text-align: center;
+        }
+        .container .parent:first-child{margin-bottom: 10px;}
+
+        .parent .item:first-child{margin-right: 10px;}
+    }
+// }
+.bar-container {
+    position: absolute;
+    top: -54px;
+    right: 0px;
+}
+
+
+
+//  antd组件的样式修改
+.ant-select-selection ant-select-selection--single{
+    border-color: #E9EBEE !important;
+    box-shadow: none !important;
+    background-color: #ffffff !important;
+}
+.ant-form-item{
+    margin-bottom: 0px;
+}
+.ant-form-item-label label{
+    color: #000 !important;
+}

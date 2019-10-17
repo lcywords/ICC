@@ -1,0 +1,115 @@
+<div class="user-list">
+  <div class="nav-right">
+    <div class="btn-div">
+      <button class="btn-style" nz-button nzType="primary" (click)="addInstitution()">Add Institution</button>
+      <button class="btn-style-right" nz-button nzType="primary"
+        (click)="changeDisplayWay()">{{isTreeDisplay ? 'Table Diaplay': 'Tree Display'}}</button>
+    </div>
+    <div class="list-container">
+      <nz-table #basicTable [nzData]="dataList" nzBordered="true" *ngIf="!isTreeDisplay" [nzScroll]="{ x: '600px' }">
+        <thead>
+          <tr class="institution-table-head">
+            <th class="table150">机构名</th>
+            <th class="table150">机构ID</th>
+            <th class="table150">机构地址</th>
+            <th class="table150">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="institution-table-body" *ngFor="let data of basicTable.data">
+            <td class="table150">{{data?.institution_name}}</td>
+            <td class="table150"><a (click)="gotoIndtitutionUsers(data?.institution_id)">{{data?.institution_id}}</a></td>
+            <td class="table150">{{data?.institution_address}}</td>
+            <td class="table150">
+              <!-- <button class="rt-btn rt-btn-sm" (click)="update(data)">编辑</button>
+              <button class="rt-btn rt-btn-sm" (click)="showDeleteConfirm(data)">删除</button> -->
+              <span><a (click)="update(data)"> 详情</a></span>
+              <span class="empty-span">|</span>
+              <span><a (click)="editInstitution(data)">编辑</a></span>
+              <span class="empty-span">|</span>
+              <span><a (click)="showDeleteConfirm(data)"> 删除</a></span>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <div style="background-color: white; height: 100%; overflow-x: auto" *ngIf="isTreeDisplay">
+        <div style="background-color: #e9ebee; height: 40px; text-align: center">
+          <p style="padding-top: 10px">机构索引</p>
+        </div>
+        <nz-tree [nzData]="nodes" nzShowLine nzShowIcon [nzExpandedIcon]="mutiExpandedIconTpl" (nzClick)="nzEvent($event)">
+          <ng-template #mutiExpandedIconTpl let-node>
+            <i *ngIf="!node.origin.isLeaf" nz-icon [type]="node.isExpanded ? 'folder-open' : 'folder'"
+              class="ant-tree-switcher-line-icon"></i>
+            <i *ngIf="node.origin.isLeaf" nz-icon nzType="file" class="ant-tree-switcher-line-icon"></i>
+          </ng-template>
+        </nz-tree>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<nz-modal style="padding-bottom: 10px;" [(nzVisible)]="isShowModal" [(nzTitle)]="modalTitle"
+  (nzOnCancel)="handleCancelModal()" [nzFooter]="null" class="nz-model" (nzOkDisabled)='false'>
+  <form nz-form [formGroup]='validateForm' (ngSubmit)='handleOkModal()'>
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]='6'>机构名称</nz-form-label>
+      <nz-form-control [nzSpan]='15' nzErrorTip='请输入机构名称'>
+        <input nz-input formControlName='institutionName' id='institutionName' placeholder="请输入机构名称" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]='6' nzRequired>机构地址</nz-form-label>
+      <nz-form-control [nzSpan]='15' nzErrorTip='请输入机构地址'>
+        <input nz-input formControlName='institutionAdress' id='institutionAdress' placeholder="请输入机构地址" />
+      </nz-form-control>
+    </nz-form-item>
+    <!-- <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired>管理员</nz-form-label>
+      <nz-form-control [nzSpan]="15" nzErrorTip="请选择机构管理员!">
+        <nz-select formControlName="managerId" nzPlaceHolder="请选择机构管理员">
+          <nz-option *ngFor="let item of userList" nzValue="{{ item._id }}" nzLabel="{{ item.user_name }}"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item> -->
+    <p style="height: 1px; background-color: #e8e8e8; margin: 20px -24px 10px -24px;"></p>
+    <nz-form-item>
+      <nz-form-control>
+        <button style="float: right; margin-bottom: 10px;" nz-button nzType="primary">确定</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>
+
+<nz-modal style="padding-bottom: 10px;" [(nzVisible)]="isShowInstitutionModal" nzTitle="编辑机构"
+  (nzOnCancel)="institutionCancelModal()" [nzFooter]="null" class="nz-model" (nzOkDisabled)='false'>
+  <form nz-form [formGroup]='institutionForm' (ngSubmit)='institutionOkModal()'>
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]='6'>机构名称</nz-form-label>
+      <nz-form-control [nzSpan]='15' nzErrorTip='请输入机构名称'>
+        <input nz-input formControlName='institutionName' id='institutionName' placeholder="请输入机构名称" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]='6' nzRequired>机构地址</nz-form-label>
+      <nz-form-control [nzSpan]='15' nzErrorTip='请输入机构地址'>
+        <input nz-input formControlName='institutionAdress' id='institutionAdress' placeholder="请输入机构地址" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired>管理员</nz-form-label>
+      <nz-form-control [nzSpan]="15" nzErrorTip="请选择机构管理员!">
+        <nz-select formControlName="managerId" nzPlaceHolder="请选择机构管理员">
+          <nz-option *ngFor="let item of userManagerList" nzValue="{{ item._id }}" nzLabel="{{ item.user_name }}"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <p style="height: 1px; background-color: #e8e8e8; margin: 20px -24px 10px -24px;"></p>
+    <nz-form-item>
+      <nz-form-control>
+        <button style="float: right; margin-bottom: 10px;" nz-button nzType="primary">确定</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+</nz-modal>

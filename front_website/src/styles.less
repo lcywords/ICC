@@ -1,0 +1,1223 @@
+@import "~ng-zorro-antd/style/entry.less"; /* 引入基本样式 */
+@import "~ng-zorro-antd/button/style/entry.less"; /* 引入组件样式 */
+
+
+
+// // set global scrollbar style
+// @global-scrollbar-width: 10px;
+// @global-scrollbar-track-color: #d8dce5;
+// @global-scrollbar-thumb-color: #adadad;
+// @global-scrollbar-thumb-active-color: #41acd5;
+// @global-scrollbar-corner-color: #535353;
+// @global-scrollbar-resize-color: #ff6e00;
+// /* 设置整个滚动条的一些属性，宽度针对垂直滚动条，高度针对水平滚动条 */
+// ::-webkit-scrollbar {
+// 	width: @global-scrollbar-width;
+// 	height: @global-scrollbar-width;
+// }
+// /* 整个滚动条去除button剩下的部分 */
+// ::-webkit-scrollbar-track {
+// 	border-radius: @global-scrollbar-width;
+// 	background-color: @global-scrollbar-track-color;
+// }
+// /* 滚动条可拖拽的部分 */
+// ::-webkit-scrollbar-thumb {
+// 	border-radius: @global-scrollbar-width;
+// 	background-color: @global-scrollbar-thumb-color;
+// }
+// ::-webkit-scrollbar-thumb:hover {
+// 	background-color: @global-scrollbar-thumb-active-color;
+// }
+// ::-webkit-scrollbar-thumb:active {
+// 	background-color: @global-scrollbar-thumb-active-color;
+// }
+// ::-webkit-scrollbar-corner {
+// 	background-color: @global-scrollbar-corner-color;
+// }
+// ::-webkit-resizer {
+// 	background-color: @global-scrollbar-resize-color;
+// }
+
+// input:-webkit-autofill {
+//     box-shadow: 0 0 0 1000px white inset !important;
+//     -webkit-box-shadow: 0 0 0 1000px white inset !important;
+// }
+// input[type=number]::-webkit-inner-spin-button, 
+// input[type=number]::-webkit-outer-spin-button { 
+//   -webkit-appearance: none; 
+//   -moz-appearance: none;
+//   appearance: none;
+//   margin: 0; 
+// }
+
+// // reset css
+// @a-default-color: #1890ff;
+// html, body, div, span,  iframe,
+// h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+// a, abbr, acronym, address, big, cite, code,
+// del, dfn, em, img, ins, kbd, q,  samp,
+// small,  strong, sub, sup, tt, var,
+// b, i,
+// dl, dt, dd, ol, ul, li,
+// fieldset, form, label, legend,
+// table, caption, tbody, tfoot, thead, tr, th, td,
+// article, aside, canvas, details, embed,
+// figure, figcaption, footer, header,
+// menu, nav, output, ruby, section, summary,
+// time, mark, audio, video, input {
+//     margin: 0;
+//     padding: 0;
+//     border: 0;
+//     font-weight: normal;
+//     vertical-align: baseline;
+// }
+
+// /* HTML5 display-role reset for older browsers */
+// article, aside, details, figcaption, figure,
+// footer, header, menu, nav, section {
+//     display: block;
+// }
+// html {
+// 	width: 100%;
+// 	height: 100%;
+// 	//font-size: 62.5%; /* font-size 62.5% * 16px = 10px, 1rem = 10px, on default browser settings, user may be change the default setting. */
+// 	font-size: 10px; 
+// }
+// body {
+//     width: 100%;
+// 	height: 100%;
+// 	line-height: 1;
+// 	font-size: 1.6rem;
+// }
+// a {
+//     text-decoration: none;
+// 	color: @a-default-color;
+// 	display: inline-block;
+// }
+
+// ul, ol {
+//     list-style: none;
+// }
+
+// blockquote {
+// 	quotes: none;
+// 	&:before{
+// 		content: none;
+// 	}
+// 	&:after {
+// 		content: none;
+// 	}
+// }
+// q {
+// 	quotes: none;
+// 	&:before{
+// 		content: none;
+// 	}
+// 	&:after {
+// 		content: none;
+// 	}
+// }
+
+// table {
+//     border-spacing: 0;
+//     border-collapse: collapse;
+//     background-color: transparent;
+// }
+
+
+// // self define style 
+
+// @header-height: 72px;
+// @global-interval: 12px;
+// @aside-top-height: 72px;
+// @aside-left-width: 14px;
+// @aside-right-width: 14px;
+// @aside-bottom-height: 14px;
+// @patient-detail-left: 286px;
+// @ct-view-left: 286px;
+// @plan-view-left: 286px;
+// @treat-view-left: 286px;
+
+// // all colors style
+// @white-font-color: rgb(255,255,255);
+// @default-font-color: rgb(207,207,207);
+// @blue-text-color: rgb(73,180,222);
+// @table-text-color: rgb(223, 223, 223);
+// @thead-text-color: rgb(83,193,236);
+// @table-border-color: rgb(73,73,73);
+// @aside-bg-color: rgb(61, 61, 61);
+// @content-bg-color: rgb(52, 52, 52);
+// @input-wrapper-bg-color: rgb(86,86,86);
+
+// .clearfix {
+// 	display: block;
+// 	zoom: 1;
+  
+// 	&:after {
+// 	  content: " ";
+// 	  display: block;
+// 	  font-size: 0;
+// 	  height: 0;
+// 	  clear: both;
+// 	  visibility: hidden;
+// 	}
+// }
+ 
+
+
+// html,body{
+// 	width: 100%;;  
+// 	height: 100%;  
+// 	min-width: var(--body-minWidth); 
+// 	// background: #f8f3f0;
+// 	padding: 0;
+// 	margin: 0;  
+// 	box-sizing: border-box;
+// 	font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+// 	// overflow-y: hidden; 
+// }
+// body {
+// 	// background: url("./assets/img/login/login_bg.jpg") repeat;
+// 	// height: 2000px;
+// 	// width: 3000px;
+// 	// overflow-y: hidden;
+// 	color: @default-font-color;
+// }
+
+
+// .ui-dialog.ui-widget .ui-dialog-titlebar{
+//     padding: .5em .75em;
+// }
+
+//  .vertical-center-modal {
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// }
+
+//  .vertical-center-modal .ant-modal {
+// 	top: 0;
+// }
+//  .vertical-center-modal .ant-modal .ant-modal-content {
+// 	background: @content-bg-color;
+// 	color: @default-font-color;
+// 	.ant-modal-header{
+// 		height: 30px;
+// 		padding: 0;
+// 		border: 0;
+// 	}
+// 	.ant-modal-body{
+// 		// background: @content-bg-color;
+// 		background: rgb(61, 61, 61);
+// 		color: @default-font-color;
+// 	   padding: 1px 0;
+//    }
+//    .ant-modal-footer{
+// 		border: 0;
+//    		background-color: @aside-bg-color;
+// 	}
+// }
+
+// .ant-tabs{
+// 	color: @default-font-color;
+// }
+// .ant-form-item-label {
+// 	label {
+// 		color: @default-font-color;
+// 	}
+// }
+// // .ant-form {
+// // 	margin: auto;
+// // }
+
+// .ant-checkbox-wrapper{
+// 	color: @default-font-color;
+// }
+
+// .ant-table {
+// 	color: @default-font-color;
+// }
+// .ant-table-thead > tr, .ant-table-tbody > tr {
+// 	line-height: 8px; 
+// }
+// .ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+// 	padding: 3px;
+// 	text-align: center;
+// 	vertical-align: middle;
+// 	white-space: nowrap;
+// 	max-width: 400px;
+// 	overflow: hidden;
+// 	text-overflow: ellipsis;
+// }
+// .self-define-thead-tr th {
+// 	text-align: left;
+// 	vertical-align: middle;
+// 	padding: 8px;
+// 	white-space: nowrap;
+// 	background-color: @content-bg-color;
+// 	color: @default-font-color;
+// }
+// .ant-table-row {
+// 	th {
+// 		text-align: center;
+// 		vertical-align: middle;
+// 		padding: 8px;
+// 		white-space: nowrap;
+// 		background-color: @content-bg-color;
+// 		color: @default-font-color;
+// 	}
+// }
+// .ant-table-placeholder{
+// 	background-color: @content-bg-color;
+// 	color: @default-font-color;
+// }
+// .ant-table-tbody > tr > td {
+// 	//  background-color: rgb(56,56,56);
+// 	//  color: @default-font-color;
+// }
+// .ant-pagination-options {
+// 	.ant-pagination-options-quick-jumper {
+// 		color: @default-font-color;
+// 	}
+// }
+// .ant-table-fixed-header>.ant-table-content>.ant-table-scroll>.ant-table-body {
+// 	background-color: @content-bg-color;
+// 	color: @default-font-color;
+// }
+// .ant-table-td-left-sticky, .ant-table-td-right-sticky{
+// 	background: rgb(56,56,56);
+//     // background-image: initial;
+//     // background-position-x: initial;
+//     // background-position-y: initial;
+//     // background-size: initial;
+//     // background-repeat-x: initial;
+//     // background-repeat-y: initial;
+//     // background-attachment: initial;
+//     // background-origin: initial;
+//     // background-clip: initial;
+//     background-color: rgb(56, 56, 56);
+// }
+// .ant-table-column-sorter{
+// 	color: #ff9800;
+// }
+// .ant-radio-group {
+// 	width: 100%;
+// 	display: flex;
+// 	justify-content: space-around;
+// }
+// .ant-radio-wrapper {
+//   font-size: 1.6rem;
+//   color: #FFFFFF;
+// }
+// nz-picker .ant-calendar-picker .ant-calendar-picker-input{
+// 	// width: 161px;
+//     // height: 40px;
+// 	// border: none;
+// 	// outline: none;
+// 	// color: @default-font-color;
+// 	// background: url("./assets/img/record-view/date_picker_bg.png") no-repeat;
+// }
+// .ant-calendar-picker-input:after {
+// 	// background: url('./assets/img/common/date.png');
+// }
+// .ant-progress-text {
+// 	color: @default-font-color;
+// }
+
+// /*dose cGy info display*/
+// .dose-cGy-info{ position: absolute; right: 0; top: 30px; }
+// .dose-cGy-info .color-wash-img{ position: absolute; right: 0; top: 25px; }
+// .dose-cGy-info .iso-fill{ position: absolute; right: 0; top: 25px; }
+// .dose-cGy-info .iso-fill .iso-fill-color-percent{ list-style: none;  padding-left: 0;  position: absolute;  right: 0;  top: 0;  margin-bottom: 0; }
+// .dose-cGy-info .iso-fill .iso-fill-color-percent li{ display: flex; flex-flow: row nowrap; justify-content: flex-end; align-items: center; }
+
+// .self-defined-table{
+// 	width: 100%;
+// 	font-size: 1.4rem;
+//     border: 1px solid @table-border-color;
+//     color: @table-text-color;
+//     caption{
+//         padding-top: 0;
+//         padding-bottom: 0;
+//         color: @table-text-color;
+//         text-align: center;
+//        	caption-side: top;
+//     }
+//     thead{
+//         width: 100%;
+//         tr{
+//             th{
+//                 color: @thead-text-color;
+//                 border: 1px solid @table-border-color;
+// 				text-align: center;
+// 				vertical-align: middle;
+// 				white-space: nowrap;
+// 			}
+// 		}
+// 	}
+// 	tbody{
+// 		width: 100%;
+// 		tr{
+// 			td{
+//                 border: 1px solid @table-border-color;
+// 				text-align: center;
+// 				vertical-align: middle;
+// 				white-space: nowrap;
+// 			}
+// 		}
+// 	}
+	
+// }
+
+// // table {
+// //     border-spacing: 0;
+// //     border-collapse: collapse;
+// //     background-color: transparent;
+// // }
+
+// .alert {
+//     padding: 15px;
+//     margin-bottom: 20px;
+//     border: 1px solid transparent;
+//     border-radius: 4px;
+// }
+// .alert-danger {
+//     color: #a94442;
+//     background-color: #f2dede;
+//     border-color: #ebccd1;
+// }
+
+// .table {
+//     width: 100%;
+//     /* height: 100%; */
+// }
+// .table-border {
+//     border: 1px solod #dddddd;
+// }
+// .table-response {
+//     min-height: .01%;
+//     overflow-x: auto;
+// }
+
+// .table>thead>tr>th, .table>tbody>tr>td , .table>tfoot>tr>td{
+// 	padding: 5px;
+// 	text-align: center;
+//     border: 1px solid #DDDDDD;
+// }
+
+// .form-control {
+//     color: #555;
+// 	/*background-color: #faebd7;*/
+// 	background-image: none;
+// 	border: 1px solid #ccc;
+// 	border-radius: 4px;
+// 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+// 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+// 	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+// 	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+// 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+// }
+// .form-control:focus {
+//     border-color: #66afe9;
+// 	outline: 0;
+// 	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+// 	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+// }
+// canvas:focus { outline: none; }
+// .ct-canvas{ width: 100%; height: 100%; outline: none; }
+
+// #spinner {
+// 	background-color: #000000;
+// 	opacity: 0.2;
+// }
+// .ant-modal-title {
+// 	position: relative;
+// }
+// .dialog-header{ 
+// 	color: @default-font-color;
+// 	background-color: @aside-bg-color;
+// 	position: relative;
+// 	overflow: hidden;
+// 	border-top-left-radius: 4px;
+// 	/* border-top-right-radius: 4px; */
+// 	width: 100%;
+// 	height: 30px;
+// 	text-align: center;
+// 	font-size: 1.8rem;
+// 	line-height: 30px;
+// 	float: left;
+// }
+// .dialog-header:hover{cursor: move;}
+// .close{
+// 	display: inline-block;
+// 	background-color: @aside-bg-color;
+// 	width: 30px;
+// 	height: 30px;
+// 	cursor: pointer;
+// 	position: absolute;
+// 	right: 0;
+// 	img {
+// 		position: absolute;
+// 		left: 3px;
+// 		top: 3px;
+// 	}
+// 	&:hover{
+// 		background: rgb(232, 17, 35);
+// 	}
+// }
+// .operation-container{ display: flex; justify-content: space-around; }
+
+// .Dot{width: 6px;height: 6px;border-radius: 100%;margin-right: 10px;margin-left: 3px;margin-top: 9px;}
+// .blue{background: #1fabf3;}
+// .green{background: #29c0af;}
+// .yellow{background: #ffb230;}
+// .orange{background: #ed6c44;}
+// .left {float: left;}
+
+// .roi-statistics-td { position: relative; }
+// .roi-statistics-td label {position: static;}
+// .roi-statistics-td-checkbox { width: 20px; height: 20px; position: absolute; left: 3px; }
+// .roi-statistics-td-img { position: absolute; left: -3px; top: 0; }
+
+// .control-bar{
+// 	width: 100%;
+// 	height: 72px;
+// 	color: @default-font-color;
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	position: fixed;
+// 	left: 0;
+// 	top: 84px;
+// }
+
+// .input-search{
+// 	width: 382px;
+// 	height: 42px;
+// 	outline: none;
+// 	border: none;
+// 	color: @default-font-color;
+// 	// background-image: url("./assets/img/patient-list/input_search_bg.png") ;
+// 	background-position-x: 0;
+// 	background-position-y: 0;
+// 	background-repeat: no-repeat;
+// }
+
+// .rt-btn {
+// 	display: inline-block;
+// 	margin-bottom: 0;
+// 	font-weight: 500;
+// 	touch-action: manipulation;
+// 	cursor: pointer;
+// 	border: none;
+// 	box-shadow: none;
+// 	outline: none;
+// 	white-space: nowrap;
+// 	padding: 0 15px;
+// 	font-size: 1.2rem;
+// 	width: 102px;
+// 	height: 36px;
+// 	text-align: center;
+// 	line-height: 36px;
+// 	user-select: none;
+// 	position: relative;
+// 	color: @default-font-color;
+// 	background-color: transparent;
+// 	// background-color: rgb(56,56,56);
+// 	// background-image: url("./assets/img/patient-list/btn_bg.png") ;
+// 	background-position-x: 0;
+// 	background-position-y: 0;
+// 	background-repeat: no-repeat;
+// 	&[disabled] {
+// 		cursor: not-allowed;
+// 		opacity: .65;
+// 	}
+// 	&-lg {
+// 		width: 127px;
+// 		height: 36px;
+// 		// background: url("./assets/img/patient-list/btn_lg_bg.png") no-repeat;
+// 		font-size: 1.6rem;
+// 	}
+// 	&-xs {
+// 		width: 93px;
+// 		height: 36px;
+// 		// background: url("./assets/img/record-view/btn_xs_bg.png") no-repeat;
+// 		font-size: 1.6rem;
+// 	}
+// 	&-sm {
+// 		width: 55px;
+// 		height: 32px;
+// 		line-height: 32px;
+// 		color: #e1e1e1;
+// 		padding: 0 5px;
+// 		// background: url("./assets/img/record-view/add_cbct_btn_bg.png") no-repeat;
+// 		&[disabled] {
+// 			color: #888888;
+// 		}
+// 	}
+// }
+// .rt-btn .rt-btn:active, .rt-btn:focus, .rt-btn:hover {
+// 	// font-weight: 700;
+// }
+
+
+// .rt-select{
+// 	width: 247px;
+// 	height: 36px;
+// 	color: #cfcfcf;
+// 	// text-align-last: center;
+// 	padding-left: 18%;
+// 	border: none;
+// 	outline: none;
+// 	appearance: none;
+// 	position: absolute;
+// 	left: 9px;
+// 	top: 9px;
+// 	// background: url("./assets/img/ct-view/select_bg.png") no-repeat center;
+// 	background-color: #4b4b4b;
+// 	&:active, &:focus, &:visited {
+// 		border: none;
+// 		outline: none;
+// 	}
+// }
+
+// .rt-input {
+// 	width: 251px;
+// 	height: 43px;
+// 	display: inline-block;
+// 	outline: none;
+// 	border: none;
+// 	color: @white-font-color;
+// 	padding-left: 16px;
+// 	// background: url("./assets/img/common/input_normal_bg.png") no-repeat center;
+// 	&:hover {
+// 		// background: url("./assets/img/common/input_hover_bg.png") no-repeat center;
+// 	}
+// 	&:focus {
+// 		// background: url("./assets/img/common/input_focus_bg.png") no-repeat center;
+// 	}
+// }
+
+// .display-control{
+// 	width: 100%;
+// 	height: ~"calc(100% - 243px)";
+// 	position: relative;
+// 	margin: 0 auto;
+// 	display: flex;
+// 	flex-direction: column;
+// 	padding: 2px;
+// 	.diaphragm-right{
+// 		width: 14px;
+// 		height: 100%;
+// 		position: absolute;
+// 		right: 0;
+// 		bottom: 0;
+// 		// outline: 1px solid blueviolet;
+// 		.bottom-right-vertical{
+// 			width: 14px;
+// 			height: ~"calc(100% - 30px)";
+// 			position: absolute;
+// 			right: 0;
+// 			top: 0;
+// 			// background: url("./assets/img/patient-list/aside_right_vertical.png") repeat center;
+// 		}
+// 		.bottom-right-corner{
+// 			width: 60px;
+// 			height: 60px;
+// 			position: absolute;
+// 			right: 1px;
+// 			bottom: -4px;
+// 			// background: url("./assets/img/patient-list/aside_bottom_right_corner.png") no-repeat center;
+// 		}
+// 	}
+// }
+
+// .dicom-show-dialog {
+//     height: 650px; 
+//     padding: 0 5px;
+//     background: @content-bg-color;
+// 	color: @default-font-color;
+// 	.dicom-info {
+// 		background: @content-bg-color;
+// 	}
+// 	.ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+// 		padding: 6px;
+// 		text-align: left;
+// 	}
+// 	.ant-table-row {
+// 		th, td {
+// 			&:nth-child(1) {
+// 				width: 350px;
+// 				min-width: 350px;
+// 				max-width: 350px;
+// 			}
+// 			&:nth-child(2) {
+// 				width: 400px;
+// 				min-width: 400px;
+// 				max-width: 400px;
+// 			}
+// 			&:nth-child(3) {
+// 				width: 100px;
+// 				min-width: 100px;
+// 				max-width: 100px;
+// 			}
+// 			&:nth-child(4) {
+// 				width: 50px;
+// 				min-width: 50px;
+// 				max-width: 50px;
+// 			}
+// 			&:nth-child(5) {
+// 				width: 50px;
+// 				min-width: 50px;
+// 				max-width: 50px;
+// 			}
+// 		}
+// 	}
+// }
+
+// .add-btn {
+// 	display: inline-block;
+// 	margin-bottom: 0;
+// 	font-weight: 500;
+// 	touch-action: manipulation;
+// 	cursor: pointer;
+// 	border: none;
+// 	box-shadow: none;
+// 	outline: none;
+// 	white-space: nowrap;
+// 	padding: 0 15px;
+// 	font-size: 1.2rem;
+// 	width: 36px;
+// 	height: 36px;
+// 	text-align: center;
+// 	line-height: 36px;
+// 	user-select: none;
+// 	position: relative;
+// 	color: @default-font-color;
+// 	background-color: transparent;
+// 	// background-image: url("./assets/img/common/add_inactive.png") ;
+// 	background-position-x: 0;
+// 	background-position-y: 0;
+// 	background-repeat: no-repeat;
+// 	&[disabled] {
+// 		cursor: not-allowed;
+// 		opacity: .65;
+// 	}
+// 	&:hover {
+// 		// background-image: url("./assets/img/common/add_active.png") ;
+// 	}
+	
+// }
+
+// .edit-btn {
+// 	display: inline-block;
+// 	margin-bottom: 0;
+// 	font-weight: 500;
+// 	touch-action: manipulation;
+// 	cursor: pointer;
+// 	border: none;
+// 	box-shadow: none;
+// 	outline: none;
+// 	white-space: nowrap;
+// 	padding: 0 15px;
+// 	font-size: 1.2rem;
+// 	width: 36px;
+// 	height: 36px;
+// 	text-align: center;
+// 	line-height: 36px;
+// 	user-select: none;
+// 	position: relative;
+// 	color: @default-font-color;
+// 	background-color: transparent;
+// 	// background-image: url("./assets/img/common/edit_inactive.png") ;
+// 	background-position-x: 0;
+// 	background-position-y: 0;
+// 	background-repeat: no-repeat;
+// 	&[disabled] {
+// 		cursor: not-allowed;
+// 		opacity: .65;
+// 	}
+	
+// }
+
+// .delete-btn {
+// 	display: inline-block;
+// 	margin-bottom: 0;
+// 	font-weight: 500;
+// 	touch-action: manipulation;
+// 	cursor: pointer;
+// 	border: none;
+// 	box-shadow: none;
+// 	outline: none;
+// 	white-space: nowrap;
+// 	padding: 0 15px;
+// 	font-size: 1.2rem;
+// 	width: 36px;
+// 	height: 36px;
+// 	text-align: center;
+// 	line-height: 36px;
+// 	user-select: none;
+// 	position: relative;
+// 	color: @default-font-color;
+// 	background-color: transparent;
+// 	// background-image: url("./assets/img/common/delete_inactive.png") ;
+// 	background-position-x: 0;
+// 	background-position-y: 0;
+// 	background-repeat: no-repeat;
+// 	&[disabled] {
+// 		cursor: not-allowed;
+// 		opacity: .65;
+// 	}
+	
+// }
+
+// .issue-search{
+// 	width: 286px;
+// 	height: 40px;
+// 	outline: none;
+// 	border: none;
+// 	color: @default-font-color;
+// 	// background-image: url("./assets/img/common/issue_search_bg.png") ;
+// 	background-position-x: 0;
+// 	background-position-y: 0;
+// 	background-repeat: no-repeat;
+// }
+// .ant-fullcalendar{
+// 	color: rgba(255, 255, 255, 0.65);
+// 	.ant-fullcalendar-value {
+// 		color: rgba(255, 255, 255, 0.65)
+// 	}
+// 	.ant-fullcalendar-last-month-cell {
+// 		.ant-fullcalendar-value{
+// 			color: rgba(255, 255, 255, 0.25)
+// 		}
+// 	}
+// 	.ant-fullcalendar-next-month-btn-day {
+// 		.ant-fullcalendar-value{
+// 			color: rgba(255, 255, 255, 0.25)
+// 		}
+// 	}  
+// }
+
+// .ant-timeline {
+// 	color: rgba(255, 255, 255, 0.65);
+// }
+
+// .follow-select{
+// 	width: 203px;
+// 	height: 27px;
+// 	color: #cfcfcf;
+// 	// text-align-last: center;
+// 	padding-left: 5%;
+// 	border: none;
+// 	outline: none;
+// 	appearance: none;
+// 	position: absolute;
+// 	left: 72px;
+// 	top: 0;
+// 	// background: url("./assets/img/common/follow_select_bg.png") no-repeat center;
+// 	background-color: #4b4b4b;
+// 	&:active, &:focus, &:visited {
+// 		border: none;
+// 		outline: none;
+// 	}
+// }
+
+// .follow-input {
+// 	width: 204px;
+// 	height: 28px;
+// 	display: inline-block;
+// 	outline: none;
+// 	border: none;
+// 	color: @white-font-color;
+// 	padding-left: 16px;
+// 	// background: url("./assets/img/common/follow_input_bg.png") no-repeat center;
+// 	&:hover {
+// 		// background: url("./assets/img/common/input_hover_bg.png") no-repeat center;
+// 	}
+// 	&:focus {
+// 		// background: url("./assets/img/common/input_focus_bg.png") no-repeat center;
+// 	}
+// }
+
+// .ant-slider-rail {
+// 	height: 12px;
+// }
+// .ant-slider-step {
+// 	height: 12px;
+// 	background-color: #343434;
+// }
+// .ant-slider-handle {
+// 	width: 0px;
+// 	height: 0px;
+// 	margin-top: 0;
+// 	border: 0
+// }
+// .ant-slider-dot {
+// 	top: -4px;
+// 	width: 20px;
+// 	height: 20px;
+// 	border: none;
+// 	background-color: #4ebae4 !important;
+// }
+// .ant-slider-disabled .ant-slider-track {
+// 	z-index: 99;
+// 	height: 12px;
+// 	background-color: #4ebae4 !important;
+// }
+// .ant-slider-mark-text {
+// 	top: 8px;
+// }
+
+// .ant-fullcalendar-header .ant-radio-group {
+// 	display: none;
+// }
+
+//  .ant-steps-item-content > .ant-steps-item-title {
+// 	color: white !important;
+// }
+// .ant-steps-item-content > .ant-steps-item-description {
+// 	position: absolute;
+// 	left: 0;
+// 	top: 25px;
+// }
+// .ant-timeline-item-head-custom {
+// 	background-color: rgb(56,56,56) !important;
+// }
+// .ant-timeline-item:hover {
+// 	// color: @a-default-color;
+// 	cursor: pointer;
+// }
+// .ant-checkbox + span {
+		
+// 	color: rgb(255, 255, 255);
+// }
+//  .ant-checkbox-disabled + span {
+		
+// 	color: rgb(160, 158, 158);
+// }
+
+// .ant-menu {
+// 	background: transparent;
+// }
+
+// .ant-menu-horizontal {
+// 	border-bottom: none;
+// 	&:hover {
+// 		border-bottom: none;
+// 	}
+// }
+
+// .ant-menu-horizontal > .ant-menu-item > a {
+// 	color: @default-font-color;
+// }
+
+// .ant-menu-horizontal > .ant-menu-item-selected, .ant-menu-horizontal > .ant-menu-submenu-selected {
+// 	border-bottom: none;
+// }
+
+// .ant-menu-horizontal > .ant-menu-item-selected:hover, .ant-menu-horizontal > .ant-menu-submenu-selected:hover {
+// 	border-bottom: none;
+// }
+
+// .ant-dropdown-menu {
+// 	background: transparent;
+// 	.ant-dropdown-menu-item {
+// 		a {
+// 			color: @default-font-color;
+// 		}
+// 	}
+// }
+
+// .ant-dropdown-menu-item-selected, .ant-dropdown-menu-submenu-title-selected, .ant-dropdown-menu-item-selected > a, .ant-dropdown-menu-submenu-title-selected > a {
+// 	background: transparent;
+// }
+
+// .ant-card {
+// 	background: @aside-bg-color !important;
+// 	color: @default-font-color;
+// 	.ant-card-head {
+// 		background: @aside-bg-color !important;
+// 		color: @default-font-color;
+// 	}
+// }
+
+
+// .ant-form-explain {
+// 	color: #a94442;
+// }
+// .ant-col-6 {
+// 	width: 23%;
+// }
+
+// .ant-select-selection--single {
+// 	border-color: #242424d4;
+//     box-shadow: inset 0px 0 10px 0px #515151, 2px 2px 2px 0px #343434;
+//     background: -webkit-linear-gradient(bottom, #343434, #616060);
+//     color: #cfcfcf;
+// }
+// .ant-select-dropdown-menu {
+// 	background: #4b4b4b !important;
+// 	color: #cfcfcf !important;
+// }
+// .ant-select-dropdown-menu-item {
+// 	color: #cfcfcf !important;
+// }
+// .ant-select-dropdown-menu-item-active,.ant-select-dropdown-menu-item:hover {
+// 	background: #40a9ff  !important;
+// 	color: #cfcfcf !important;
+// }
+
+// .btn-search {
+// 	border: 1px solid;
+//     border-color: #242424;
+//     box-shadow: inset 0px 0 10px 0px #515151;
+//     background: -webkit-linear-gradient(bottom,#343434,#616060);
+// 	color: #151515;
+// 	width: 40px;
+// }
+// .reset-btn {
+// 	color: #cfcfcf;
+//     border: 1px solid #515151;
+//     box-shadow: inset 0px 0 10px 0px #515151, 0px 0 5px 0px #242424;
+//     background: -webkit-linear-gradient(bottom, #3d3d3d, #cfcfcf4f);
+// }
+// .ant-input {
+// 	border: 1.4px solid #242424;
+//     box-shadow: 0px 0 1px 0.2px #cfcfcf;
+//     color: #cfcfcf;
+// 	background: #343434;
+	
+// }
+// textarea {
+// 	border: 1.4px solid #242424;
+//     box-shadow: 0px 0 0px 0.2px #cfcfcf;
+//     color: #cfcfcf;
+//     background: #343434;
+//     border-radius: 3px;
+// }
+// .ant-drawer-content {
+// 	background: #343434 !important;
+//     color: #cfcfcf !important;
+// }
+
+// .ant-fullcalendar-fullscreen .ant-fullcalendar-month-panel-selected-cell .ant-fullcalendar-month, .ant-fullcalendar-fullscreen .ant-fullcalendar-selected-day .ant-fullcalendar-date {
+// 	background: #2e2e2e;
+// }
+// .ant-fullcalendar-fullscreen .ant-fullcalendar-month, .ant-fullcalendar-fullscreen .ant-fullcalendar-date {
+// 	border: 0;
+// }
+// .ant-fullcalendar-fullscreen .ant-fullcalendar-month:hover, .ant-fullcalendar-fullscreen .ant-fullcalendar-date:hover {
+// 	background: #2e2e2e;
+// }
+// .ant-badge-status-text {
+// 	color: #1890ff;
+// }
+// .ant-table-bordered .ant-table-header > table, .ant-table-bordered .ant-table-body > table, .ant-table-bordered .ant-table-fixed-left table, .ant-table-bordered .ant-table-fixed-right table {
+// 	border: 1px solid #4b4b4b;
+// }
+// .ant-table-thead > tr, .ant-table-tbody > tr {
+// 	height: 30px;
+// 	th,td {
+// 		background: #343434;
+// 		color: #c0c0c0;
+// 	}
+// }
+// .ant-table-thead > tr > th {
+//     background: #3d3d3d;
+//     box-shadow: inset 0px 0px 2px 1px #515151;
+//     border: 2px solid #343434;
+// }
+// .ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td {
+//     border-right: 1px solid #4b4b4b;
+// }
+// .ant-table-tbody > tr > td {
+// 	border-bottom: 1px solid #4b4b4b;
+// }
+// .bar-btn-right {
+//     position: absolute;
+//     top: 0;
+//     right: 11px;
+// }
+
+// // 日历样式
+// // .ant-calendar-panel,.ng-trigger {
+// // 	background-color: #535353;
+// // }
+
+// .ant-tree li .ant-tree-node-content-wrapper {
+// 	color: #c6cfcf;
+// 	cursor: context-menu;
+// }
+// .ant-tree li .ant-tree-node-content-wrapper:hover {
+// 	background: #343434;
+// }
+// .ant-tree li .ant-tree-node-content-wrapper.ant-tree-node-selected {
+// 	background: #343434;
+// }
+
+// .ant-calendar, .ant-calendar-input {
+// 	background: #535353;
+// 	border: 1px solid #535353;
+// 	color: #cfcfcf;
+// 	.ant-calendar-input-wrap,.ant-calendar-header {
+// 		border-bottom: 1px solid #818181;
+// 	}
+// 	.ant-calendar-footer {
+// 		border-top: 1px solid #818181;
+// 	}
+// }
+// .ant-calendar-picker-container,.ant-calendar-date {
+// 	color: #cfcfcf;
+// }
+// .ant-calendar-header .ant-calendar-prev-century-btn, .ant-calendar-header .ant-calendar-next-century-btn, .ant-calendar-header .ant-calendar-prev-decade-btn, .ant-calendar-header .ant-calendar-next-decade-btn, .ant-calendar-header .ant-calendar-prev-month-btn, .ant-calendar-header .ant-calendar-next-month-btn, .ant-calendar-header .ant-calendar-prev-year-btn, .ant-calendar-header .ant-calendar-next-year-btn,.ant-calendar-header .ant-calendar-century-select, .ant-calendar-header .ant-calendar-decade-select, .ant-calendar-header .ant-calendar-year-select, .ant-calendar-header .ant-calendar-month-select {
+// 	color: #cfcfcf;
+// }
+
+// .card-row {
+// 	padding: 10px 0;
+// }
+
+
+// // 登陆人信息
+// .nav-title {
+// 	top: -4%;
+// 	position: absolute;
+// 	span {
+// 		padding: 0 20px;
+// 	}
+// }
+
+// // input:-internal-autofill-previewed,
+// // input:-internal-autofill-selected,
+// // textarea:-internal-autofill-previewed,
+// // textarea:-internal-autofill-selected,
+// // select:-internal-autofill-previewed,
+// // select:-internal-autofill-selected {
+// //   -webkit-text-fill-color: #343434 !important;
+// //   transition: background-color 5000s ease-in-out 0s !important;
+// //   background-color: #343434 !important;
+// // }
+// // input {
+// // 	outline: none;
+// // }
+// input:-internal-autofill-selected {
+// 	background-color: #000000 !important;
+// }
+
+// .ant-modal-confirm {
+// 	.ant-modal-content {
+// 		background: #3f3f3f;
+// 		.ng-star-inserted {
+// 			color: rgb(166, 166, 166);
+// 		}
+// 	}
+// }
+
+// // 右上角返回按钮
+// .right-back{
+// 	position: absolute;
+// 	top: -55px;
+// 	right: 0;
+// 	z-index: 10;
+// }
+// // 右上角返回小按钮
+// .header-container {
+//     position: absolute;
+//     right: 0;
+//     top: -54px;
+// 	width: 100%;
+// 	z-index: 10;
+//     .header-btn {
+//         text-align: right;
+//         .ant-btn {
+//             margin: 0 5px;
+//         }
+//     }
+// }
+// // 表格
+// .ant-table-wrapper{
+// 	height: 100%;
+// 	.ant-spin-nested-loading{
+// 		height: 100%;
+// 		.ant-spin-container{
+// 			height: 100%;
+// 			.ant-table-content{
+// 				height: 100%;
+// 				.ant-table-scroll{
+// 					height: 100%;
+// 					.ant-table-body{
+// 						height: calc(100%);
+// 					}
+// 				}
+// 			}
+// 			.ant-table{
+// 				height: calc(100% - 64px);
+// 			}
+				
+// 		}
+// 	}
+// }
+
+// .ant-table-placeholder{
+// 	position: absolute;
+// 	top: 50px;
+// 	display: block;
+// 	left: 0;
+// 	right: 0;
+// 	height: 100%;
+// 	border-bottom: none;
+// 	min-height: 160px;
+// }	
+
+// .particularly-style{ //修改 技师 position lable
+//     .ant-form-item-label label {
+// 		color: #999999;
+// 	}
+// }
+
+// .ant-checkbox-inner{
+// 	background-color: #3d3d3d;
+// }
+// .cure-date-week{ // 多选框
+// 	.ant-checkbox-inner{
+// 		box-shadow: 0px 0px 5px 0px #515151;
+// 		border: 1px solid #333333;
+
+// 	}
+// 	.ant-checkbox-wrapper{
+// 		margin-right: 30px;
+// 		.ant-checkbox + span {
+// 			color: #C6C6C6;
+// 			font-size: 14px;
+// 		}
+// 	}
+// }
+// // 手风琴样式修改
+// .ant-collapse{
+// 	background-color: #343434;
+// 	border:none;
+// 	.ant-collapse-item{
+// 		border-color:#343434;
+// 	}
+// 	.ant-collapse-header{
+// 		color: #cfcfcf !important;
+// 	}
+// 	.ant-collapse-content{
+// 		background-color: #343434;
+// 		border-color:#343434;
+// 		color: #cfcfcf;
+// 	}
+// 	.ant-collapse-content-box{
+// 		padding:0;
+// 		padding-left: 16px;
+// 	}
+// }
+
+.ant-modal-content .ant-modal-body{
+  padding-bottom: 0px !important;
+}
+
+.ant-modal-confirm-body-wrapper{
+  padding-bottom: 20px !important;
+}

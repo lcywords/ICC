@@ -1,0 +1,16 @@
+{
+  "/dt_monitor/api": {
+    "target": "http://localhost:6100",
+    "secure": false
+  },
+  "/user": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true,
+    "pathRewrite":{
+      "^/api": ""
+    },
+    "logLevel":"debug"
+  }
+}

@@ -1,0 +1,89 @@
+<div class="big-view">
+  <div class="menu">
+    <div class="info-title">
+      <p class="info-title-after">基本信息</p>
+    </div>
+
+    <div nz-row class="info-area">
+      <div nz-col nzSpan="5">
+        <p class="info-item-title">用户ID:</p>
+        <p class="info-item">{{ data['_id'] }}</p>
+      </div>
+      <div nz-col nzSpan="5">
+        <p class="info-item-title">用户名:</p>
+        <p class="info-item">{{ data['user_name'] }}</p>
+      </div>
+      <div nz-col nzSpan="5">
+        <p class="info-item-title">性别:</p>
+        <p class="info-item">{{data['user_sex']}}</p>
+      </div>
+      <div nz-col nzSpan="9">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">用户电话:</p>
+          </div>
+          <div class="child">
+            <input nz-input placeholder="" [(ngModel)]="data['user_mobile']"/>
+          </div>
+          <div class="child">
+            <button nz-button nzType="primary" (click)="changeUserNumber()">修改</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div nz-row class="info-area-second">
+      <div nz-col nzSpan="5">
+        <p class="info-item-title">机构ID:</p>
+        <p class="info-item">{{data['institution_id']}}</p>
+      </div>
+      <div nz-col nzSpan="5">
+        <p class="info-item-title">用户类型:</p>
+        <p class="info-item">{{ data['user_type'] }}</p>
+      </div>
+      <div nz-col nzSpan="5">
+        <p class="info-item-title">用户权限:</p>
+        <p class="info-item">{{data['user_authority']}}</p>
+      </div>
+      <div nz-col nzSpan="9">
+        <div class="user-mobile">
+          <div class="child">
+            <p class="info-item-title">用户密码:</p>
+          </div>
+          <div class="info-password">
+            <p>******</p>
+          </div>
+          <div class="child">
+            <button nz-button nzType="primary" (click)="changeUserPassword()">修改</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-title-second">
+    <p class="info-title-after">产品信息</p>
+  </div>
+  <div class="nav-right">
+    <div class="list-container">
+      <nz-table #rowSelectionTable nzBordered [nzData]="dataKeys">
+        <thead>
+          <tr class="institution-table-head">
+            <th class="first-head-th">Product Name</th>
+            <th>Own Product</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="institution-table-body" *ngFor="let item of rowSelectionTable.data">
+            <td>{{ item }}</td>
+            <td nzShowCheckbox [(nzChecked)]="data.user_product_list[item]"></td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+
+    <div>
+      <button nz-button nzType="primary" (click)="updateProductData()" class="button-area">提交</button>
+    </div>
+  </div>
+</div>

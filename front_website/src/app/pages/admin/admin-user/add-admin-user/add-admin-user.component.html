@@ -1,0 +1,110 @@
+<div class="big-view">
+  <div class="info-title">
+    <p class="info-title-after">基本信息</p>
+  </div>
+  <form nz-form [formGroup]="validateForm" class="form">
+    <nz-form-item>
+      <nz-form-label nzRequired>用户id</nz-form-label>
+      <nz-form-control nzErrorTip="请输入3~20位用户id!">
+        <input type="text" nz-input formControlName="userId" placeholder="请输入用户Id" maxlength="20" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired>用户姓名</nz-form-label>
+      <nz-form-control nzErrorTip="请输入3~20位用户姓名!">
+        <input type="text" nz-input formControlName="userName" placeholder="请输入用户姓名" maxlength="20" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="nz-form-item">
+      <nz-form-label>电话号码</nz-form-label>
+      <nz-form-control nzErrorTip="电话号码格式不正确!">
+        <input type="text" maxlength="11" nz-input formControlName="userMobile" placeholder="请输入电话号码" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="birthdayItem">
+      <nz-form-label>出生日期</nz-form-label>
+      <nz-form-control nzErrorTip="请输入出生年!" class="birthday">
+        <input type="text" nz-input formControlName="year" placeholder="" maxlength="4" />
+        <p>年</p>
+      </nz-form-control>
+      <nz-form-control nzErrorTip="请输入出生月!">
+        <input type="text" nz-input formControlName="month" placeholder="" maxlength="2" />
+        <p>月</p>
+      </nz-form-control>
+      <nz-form-control nzErrorTip="请输入出生日!">
+        <input type="text" nz-input formControlName="day" placeholder="" maxlength="2" />
+        <p>日</p>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired>用户性别</nz-form-label>
+      <nz-form-control nzErrorTip="请选择用户性别">
+        <nz-radio-group formControlName="userSex">
+          <label nz-radio nzValue="男" style="color: black">男</label>
+          <label nz-radio nzValue="女" style="color: black">女</label>
+          <label nz-radio nzValue="2" style="color: black">不明</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired>用户类型</nz-form-label>
+      <nz-form-control nzErrorTip="请选择用户类型!">
+        <nz-select formControlName="userType" nzPlaceHolder="请选择用户类型">
+          <nz-option *ngFor="let control of userTypeList" nzValue="{{ control }}" nzLabel="{{ control }}"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired>选择机构</nz-form-label>
+      <nz-form-control nzErrorTip="请选择机构名称!">
+        <nz-select formControlName="institutionId" nzPlaceHolder="请选择机构名称">
+          <nz-option *ngFor="let item of institutionList" [nzValue]="item['institution_id']"
+            [nzLabel]="item['institution_name']"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired>用户密码</nz-form-label>
+      <nz-form-control nzErrorTip="请输入1~20位用户密码!">
+        <input type="text" type="password" autocomplete="new-password" nz-input formControlName="userPassword"
+          placeholder="请输入用户密码" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>备注</nz-form-label>
+      <nz-form-control nzErrorTip="请输入备注!">
+        <textarea rows="2" nz-input formControlName="description" placeholder="请输入备注"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <div class="info-title">
+    <p class="info-title-after">产品信息</p>
+  </div>
+  <div class="list-container padding20">
+    <nz-table #rowSelectionTable nzBordered [nzData]="dataKeys">
+      <thead>
+        <tr class="institution-table-head">
+          <th class="first-head-th" nzWidth="25%">Product Name</th>
+          <th nzWidth="25%">Own Product</th>
+          <th>Authority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="institution-table-body" *ngFor="let item of rowSelectionTable.data">
+          <td>{{ displayUserProductMap[item] }}</td>
+          <td nzShowCheckbox [(nzChecked)]="userProductMap[item]"></td>
+          <td>
+            <div *ngIf="nodes[item] && userProductMap [item]">
+              <div *ngFor="let control of nodes[item]" style="margin-bottom: 5px">
+                <label nz-checkbox [(ngModel)]="control.value">{{control.key}}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div class="submit-button">
+    <button nz-button nzType="primary" (click)="handleOkModal()">添加用户</button>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div nz-row style="margin-top: 20px">
+  <div nz-col nzSpan="8">
+    <div nz-row>
+      <p nz-col nzSpan="4" style="color: black">用户名</p>
+      <div nz-col nzSpan="16"><input nz-input placeholder="" [(ngModel)]="user_name" /></div>
+    </div>
+  </div>
+</div>
+
+<div nz-row style="margin-top: 20px">
+  <div nz-col nzSpan="8">
+    <div nz-row>
+      <p nz-col nzSpan="4" style="color: black">手机号</p>
+      <div nz-col nzSpan="16"><input nz-input placeholder="" [(ngModel)]="user_mobile" /></div>
+    </div>
+  </div>
+</div>
+
+<div nz-row style="margin-top: 20px">
+  <div nz-col nzSpan="8">
+    <div nz-row>
+      <p nz-col nzSpan="4" style="color: black">机构名称</p>
+      <div nz-col nzSpan="16"><input nz-input placeholder="" [(ngModel)]="institution_name" /></div>
+    </div>
+  </div>
+</div>
+
+<div nz-row style="margin-top: 20px">
+  <div nz-col nzSpan="8">
+    <div nz-row>
+      <p nz-col nzSpan="4" style="color: black">性别</p>
+      <div nz-col nzSpan="16">
+        <nz-radio-group nz-col nzSpan="8" [(ngModel)]="user_sex">
+          <label nz-radio nzValue="男" style="color: black">男</label>
+          <label nz-radio nzValue="女" style="color: black">女</label>
+          <label nz-radio nzValue="" style="color: black">不明</label>
+        </nz-radio-group>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div nz-row style="margin-top: 20px">
+  <div nz-col nzSpan="8">
+    <div nz-row>
+      <p nz-col nzSpan="4" style="color: black">机构</p>
+      <nz-select [(ngModel)]="institution_name" style="width: 65%;">
+        <nz-option *ngFor="let item of institutionList" [nzValue]="item['institution_name']"
+          [nzLabel]="item['institution_name']"></nz-option>
+      </nz-select>
+    </div>
+  </div>
+</div> -->
+
+<div nz-row style="margin-top: 20px">
+  <div nz-col nzSpan="8">
+    <div nz-row>
+      <p nz-col nzSpan="4" style="color: black">用户类型</p>
+      <div nz-col nzSpan="16">
+        <nz-radio-group nz-col nzSpan="8" [(ngModel)]="user_type">
+          <label nz-radio nzValue="Doctor" style="color: black">Doctor</label>
+          <label nz-radio nzValue="Physicist" style="color: black">Physicist</label>
+        </nz-radio-group>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div nz-row style="margin-top: 20px">
+  <div nz-col nzSpan="8">
+    <button nz-button nzType="primary" (click)="addNewExpert()">提交</button>
+  </div>
+</div>

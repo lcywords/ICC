@@ -1,0 +1,98 @@
+<div class="user-list">
+	<div class="nav-right">
+		<div class="btn-div">
+			<button nz-button nzType="primary" (click)="addExpert()">Add Expert</button>
+		</div>
+		<div class="list-container">
+			<nz-table #basicTable [nzData]="dataList" nzBordered="true" [nzScroll]="{ x: '800px' }">
+				<thead>
+					<tr class="institution-table-head">
+						<th class="table150">ID</th>
+						<th class="table150">Expert Name</th>
+						<th class="table120">Case Number</th>
+						<th class="table120">Login Times</th>
+						<th class="table120">Created Time</th>
+						<th class="table120">Phone Number</th>
+						<th class="table120">Hospital Name</th>
+						<th class="table120">Last Login Time</th>
+						<th class="table150">Detail</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="institution-table-body" *ngFor="let data of basicTable.data">
+						<td class="table150">{{data?._id}}</td>
+						<td class="table150">{{data?.user_name}}</td>
+						<td class="table120">{{data?.case_number}}</td>
+						<td class="table120">{{data?.login_times}}</td>
+						<td class="table120">{{data?.created_time}}</td>
+						<td class="table120">{{data?.user_mobile}}</td>
+						<td class="table120">{{data?.institution_name}}</td>
+						<td class="table120">{{data?.last_login_time}}</td>
+						<td class="table150">
+							<span><a (click)="update(data)">详情</a></span>
+							<span class="empty-span">|</span>
+							<span><a (click)="showDeleteConfirm(data)"> 删除</a></span>
+						</td>
+					</tr>
+				</tbody>
+			</nz-table>
+		</div>
+	</div>
+</div>
+
+
+<nz-modal [(nzVisible)]="isShowModal" nzTitle="新增用户" [nzFooter]="null" (nzOnCancel)="handleCancelModal()"
+	class="nz-model">
+	<form nz-form [formGroup]="validateForm" (ngSubmit)="handleOkModal()">
+		<nz-form-item>
+			<nz-form-label [nzSpan]="5" nzRequired>用户姓名</nz-form-label>
+			<nz-form-control [nzSpan]="12" nzErrorTip="请输入用户姓名!">
+				<input nz-input formControlName="userName" id="userName" placeholder="请输入用户姓名" />
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item>
+			<nz-form-label [nzSpan]="5" nzRequired>手机号</nz-form-label>
+			<nz-form-control [nzSpan]="12" nzErrorTip={{errorMsg}}>
+				<input type="text" nz-input formControlName="userMobile" maxlength="11" placeholder="请输入手机号"
+					(ngModelChange)="requiredChange($event)" />
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item>
+			<nz-form-label [nzSpan]="5" nzRequired>用户性别</nz-form-label>
+			<nz-form-control [nzSpan]="12" nzErrorTip="请选择用户性别">
+				<nz-radio-group formControlName="userSex">
+					<label nz-radio nzValue="男" style="color: black">男</label>
+					<label nz-radio nzValue="女" style="color: black">女</label>
+					<label nz-radio nzValue="2" style="color: black">不明</label>
+				</nz-radio-group>
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item>
+			<nz-form-label [nzSpan]="5" nzRequired>机构名称</nz-form-label>
+			<nz-form-control [nzSpan]="12" nzErrorTip="请输入机构名称!">
+				<input type="text" nz-input formControlName="institutionName" placeholder="请输入机构名称" />
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item>
+			<nz-form-label [nzSpan]="5" nzFor="gender" nzRequired>用户类型</nz-form-label>
+			<nz-form-control [nzSpan]="12" nzErrorTip="请选择用户类型!">
+				<nz-select formControlName="userType" nzPlaceHolder="请选择用户类型">
+					<nz-option *ngFor="let control of userTypeList" nzValue="{{ control }}" nzLabel="{{ control }}">
+					</nz-option>
+				</nz-select>
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item>
+			<nz-form-label [nzSpan]="5" nzRequired>用户密码</nz-form-label>
+			<nz-form-control [nzSpan]="12" nzErrorTip="请输入1~20位用户密码!">
+				<input type="password" autocomplete="new-password" nz-input formControlName="userPassword" placeholder="请输入用户密码" />
+			</nz-form-control>
+		</nz-form-item>
+		<p style="height: 1px; background-color: #e8e8e8; margin: 20px -24px 10px -24px;"></p>
+		<nz-form-item>
+			<nz-form-control>
+				<button style="float: right; margin-bottom: 10px;" nz-button nzType="primary">确定</button>
+			</nz-form-control>
+		</nz-form-item>
+	</form>
+</nz-modal>

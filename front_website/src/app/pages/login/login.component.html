@@ -1,0 +1,58 @@
+<div class="login-view">
+	<div class="login-form">
+		<div>
+			<p class="title">Sign In</p>
+		</div>
+		<div>
+			<p class="assist-font">Hello! Sign in with your username or email</p>
+		</div>
+		<form nz-form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+			<nz-form-item>
+				<nz-form-control nzHasFeedback>
+					<nz-input-group nzPrefixIcon="anticon anticon-user">
+						<input type="text" nz-input formControlName="username" placeholder="用户名">
+					</nz-input-group>
+					<nz-form-explain *ngIf="loginForm.controls.username.dirty&&loginForm.controls.username.errors">
+						<ng-container *ngIf="loginForm.controls.username.hasError('required')">
+							请输入用户名!
+						</ng-container>
+						<ng-container *ngIf="loginForm.controls.username.hasError('minLength')
+											||loginForm.controls.username.hasError('maxLength')
+											||loginForm.controls.username.hasError('pattern')">
+							用户名长度在3~20位,只能包含字母,数字!
+						</ng-container>
+					</nz-form-explain>
+				</nz-form-control>
+			</nz-form-item>
+			<nz-form-item>
+				<nz-form-control nzHasFeedback>
+					<nz-input-group nzPrefixIcon="anticon anticon-lock">
+						<input nz-input type="password" formControlName="password" placeholder="密码">
+					</nz-input-group>
+					<nz-form-explain *ngIf="loginForm.controls.password.dirty&&loginForm.controls.password.errors">
+						<ng-container *ngIf="loginForm.controls.password.hasError('required')">
+							请输入密码!
+						</ng-container>
+						<ng-container *ngIf="loginForm.controls.password.hasError('minLength')
+											||loginForm.controls.password.hasError('maxLength')
+											||loginForm.controls.password.hasError('pattern')">
+							密码长度在1~20位,并且不能包含空格!
+						</ng-container>
+					</nz-form-explain>
+				</nz-form-control>
+			</nz-form-item>
+			<nz-form-item>
+				<nz-form-control>
+					<label class="remember" nz-checkbox formControlName="remember">
+						<span>Remember me</span>
+					</label>
+					<a class="login-form-forgot" (click)="gotoForgetPassword()">Forgot password?</a>
+					<input type="submit" [disabled]="_loading" value="SIGN IN" />
+				</nz-form-control>
+			</nz-form-item>
+			<div class="sign-up-text">
+				<p> Don't have an account? <a (click)="gotoRegister()">Sign Up</a></p>
+			</div>
+		</form>
+	</div>
+</div>

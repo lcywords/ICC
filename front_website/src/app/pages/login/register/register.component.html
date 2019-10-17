@@ -1,0 +1,87 @@
+<div class="login-view">
+	<div class="login-form">
+		<div>
+			<p class="title">Sign Up</p>
+		</div>
+		<form nz-form [formGroup]="registerForm" (ngSubmit)="onLogin()">
+			<nz-form-item>
+				<nz-form-control>
+					<nz-input-group nzPrefixIcon="anticon anticon-user">
+						<input type="text" nz-input formControlName="username" placeholder="用户名">
+					</nz-input-group>
+					<nz-form-explain *ngIf="registerForm.controls.username.dirty&&registerForm.controls.username.errors">
+						<ng-container *ngIf="registerForm.controls.username.hasError('required')">
+							请输入用户名!
+						</ng-container>
+						<ng-container *ngIf="registerForm.controls.username.hasError('minLength')
+											||registerForm.controls.username.hasError('maxLength')
+											||registerForm.controls.username.hasError('pattern')">
+							用户名长度在3~20位,只能包含字母,数字!
+						</ng-container>
+					</nz-form-explain>
+				</nz-form-control>
+			</nz-form-item>
+			<nz-form-item>
+				<nz-form-control>
+					<nz-input-group nzPrefixIcon="mail">
+						<input type="text" autocomplete="off" nz-input formControlName="email" placeholder="Email address">
+					</nz-input-group>
+					<nz-form-explain *ngIf="registerForm.controls.email.dirty&&registerForm.controls.email.errors">
+						<ng-container *ngIf="registerForm.controls.email.hasError('required')">
+							请正确输入邮箱地址!
+						</ng-container>
+						<ng-container *ngIf="registerForm.controls.email.hasError('email')">
+							请正确输入邮箱地址!
+						</ng-container>
+					</nz-form-explain>
+				</nz-form-control>
+			</nz-form-item>
+			<nz-form-item>
+				<nz-form-control>
+					<nz-input-group nzPrefixIcon="anticon anticon-lock">
+						<input nz-input type="password" autocomplete="new-password" formControlName="password" placeholder="密码">
+					</nz-input-group>
+					<nz-form-explain *ngIf="registerForm.controls.password.dirty&&registerForm.controls.password.errors">
+						<ng-container *ngIf="registerForm.controls.password.hasError('required')">
+							请输入密码!
+						</ng-container>
+						<ng-container *ngIf="registerForm.controls.password.hasError('minLength')
+											||registerForm.controls.password.hasError('maxLength')
+											||registerForm.controls.password.hasError('pattern')">
+							密码长度在1~20位,并且不能包含空格!
+						</ng-container>
+					</nz-form-explain>
+				</nz-form-control>
+			</nz-form-item>
+			<nz-form-item>
+				<nz-form-control>
+					<nz-input-group nzPrefixIcon="anticon anticon-lock">
+						<input nz-input type="password" autocomplete="new-password" formControlName="confirmPassword" placeholder="密码">
+					</nz-input-group>
+					<nz-form-explain *ngIf="registerForm.controls.confirmPassword.dirty&&registerForm.controls.confirmPassword.errors">
+						<ng-container *ngIf="registerForm.controls.confirmPassword.hasError('required')">
+							请输入密码!
+						</ng-container>
+						<ng-container *ngIf="registerForm.controls.confirmPassword.hasError('minLength')
+												||registerForm.controls.confirmPassword.hasError('maxLength')
+												||registerForm.controls.confirmPassword.hasError('pattern')">
+							密码长度在1~20位,并且不能包含空格!
+						</ng-container>
+					</nz-form-explain>
+				</nz-form-control>
+			</nz-form-item>
+			<nz-form-item>
+				<nz-form-control>
+					<label class="remember" nz-checkbox formControlName="remember">
+						<span>Agree to</span>
+					</label>
+					<a class="remember-link">terms & Conditions?</a>
+					<input type="submit" [disabled]="this.registerForm.invalid" value="REGISTER"/>
+				</nz-form-control>
+			</nz-form-item>
+			<div class="sign-up-text">
+				<p class="p1"> Already have an account? <a (click)="gotoLogin()">Sign In</a></p>
+			</div>
+		</form>
+	</div>
+</div>
