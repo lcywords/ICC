@@ -1,2 +1,0 @@
-go build -ldflags "-w -s" ./static_go.go
-go build -ldflags="-H windowsgui"

@@ -11,15 +11,32 @@
 package main
 
 import (
+	sw "go_server/swagger"
 	"log"
 	"net/http"
-	sw "go_server/swagger"
+	"os"
+	"time"
 )
 
+var loger *log.Logger
+
+func init() {
+	file := "./log/" + time.Now().Format("2020-01-01") + ".txt"
+	logFile, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0766)
+	if err != nil {
+		panic(err)
+	}
+	loger = log.New(logFile, "[qSkiptool]",log.LstdFlags | log.Lshortfile | log.LUTC) // 将文件设置为loger作为输出
+	return
+}
+
 func main() {
+	loger.Println("Server started; Listening on 8000")
 	log.Printf("Server started")
 
 	router := sw.NewRouter()
 
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
+
+
