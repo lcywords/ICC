@@ -240,4 +240,3 @@ func TestInsert(b *testing.T) {
 		go delete(context.TODO(), collection, i)
 	}
 }
-func TestProto

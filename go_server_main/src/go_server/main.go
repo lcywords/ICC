@@ -11,7 +11,7 @@
 package main
 
 import (
-	sw "go_server/swagger"
+	sw "go_server/service"
 	"log"
 	"net/http"
 	"os"
@@ -21,7 +21,8 @@ import (
 var loger *log.Logger
 
 func init() {
-	file := "./log/" + time.Now().Format("2020-01-01") + ".txt"
+	filename := time.Now().Format("2006-01-02")
+	file := "./log/" +filename + ".txt"
 	logFile, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0766)
 	if err != nil {
 		panic(err)
