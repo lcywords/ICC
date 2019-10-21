@@ -1,3 +1,14 @@
 [go_server]2019/10/21 05:46:01 service_log.go:13: GET /user/123456 GetUserByName 0s
 [go_server]2019/10/21 05:46:58 service_log.go:13: GET /user/123456 GetUserByName 0s
 [go_server]2019/10/21 05:47:09 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 06:21:33 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 06:22:06 service_log.go:13: GET /user/123456 GetUserByName 998.5µs
+[go_server]2019/10/21 06:24:06 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 07:11:27 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 07:12:18 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 07:14:00 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 07:14:09 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 07:14:47 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 07:26:22 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 07:29:52 service_log.go:13: GET /user/123456 GetUserByName 0s
+[go_server]2019/10/21 09:07:19 service_log.go:13: GET /user/123456 GetUserByName 0s

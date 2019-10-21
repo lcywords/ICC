@@ -11,16 +11,17 @@
 package main
 
 import (
+	"go_server/mysql"
 	sw "go_server/service"
 	"log"
 	"net/http"
-	mysql "go_server/mysql"
 )
 
 func main() {
 	log.Printf("Server started")
-	sql := mysql.GetMysql(USERNAME, PASSWORD, NETWORK, SERVER, PORT, DATABASE)
 	mlog := InitLog()
+	sql := mysql.GetMysql(USERNAME, PASSWORD, NETWORK, SERVER, PORT, DATABASE, mlog)
+	//redis.GetRedis("127.0.0.1", 6379,3600, mlog)
 	router := sw.NewRouter(sql, mlog)
 
 	log.Fatal(http.ListenAndServe(":8000", router))

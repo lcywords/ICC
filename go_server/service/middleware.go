@@ -7,7 +7,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func middleHandler(inner http.Handler, mlog *log.Logger) http.Handler {
+func MiddleHandler(inner http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
 		a := vars["username"]

@@ -27,13 +27,22 @@ type Route struct {
 
 type Routes []Route
 
+type ConfigSetting struct {
+	mysql Mysql
+	mlog *log.Logger
+}
+var configSetting ConfigSetting
+
 func NewRouter(mysql Mysql, mlog *log.Logger) *mux.Router {
-	mysql.InsertData()
+	configSetting = ConfigSetting {
+		mysql,
+		mlog,
+	}
 	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes {
 		var handler http.Handler
 		handler = route.HandlerFunc
-		handler = middleHandler(Logger(handler, route.Name, mlog))
+		handler = MiddleHandler(Logger(handler, route.Name))
 		router.
 			Methods(route.Method).
 			Path(route.Pattern).

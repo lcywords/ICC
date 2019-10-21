@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"  //这里是下载的mysql驱动
+	"log"
 	"time"
 )
 
@@ -20,7 +21,7 @@ func (mysql *Mysql) Connect() {
 	mysql.DB = DB
 }
 
-func GetMysql(USERNAME string, PASSWORD string, NETWORK string, SERVER string, PORT int, DATABASE string) *Mysql{
+func GetMysql(USERNAME string, PASSWORD string, NETWORK string, SERVER string, PORT int, DATABASE string, mlog *log.Logger) *Mysql{
 	var mysql Mysql
 	mysql.USERNAME = USERNAME
 	mysql.PASSWORD = PASSWORD
@@ -28,6 +29,7 @@ func GetMysql(USERNAME string, PASSWORD string, NETWORK string, SERVER string, P
 	mysql.SERVER = SERVER
 	mysql.PORT = PORT
 	mysql.DATABASE = DATABASE
+	mysql.mlog = mlog
 	mysql.Connect()
 	return &mysql
 }
@@ -40,4 +42,5 @@ type Mysql struct {
 	PORT int
 	DATABASE string
 	DB *sql.DB
+	mlog *log.Logger
 }
