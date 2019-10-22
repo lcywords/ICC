@@ -90,3 +90,18 @@ func (sql *Mysql) DeleteData(){
 	}
 	fmt.Println("RowsAffected:",rowsaffected)
 }
+
+//查询
+func (sql *Mysql) TestMysql() {
+	result,err := sql.DB.Exec("select * from users",1)
+	if err != nil{
+		fmt.Printf("Insert failed,err:%v",err)
+		return
+	}
+	rowsaffected,err := result.RowsAffected()
+	if err != nil {
+		fmt.Printf("Get RowsAffected failed,err:%v",err)
+		return
+	}
+	fmt.Println("RowsAffected:",rowsaffected)
+}

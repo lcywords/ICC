@@ -29,13 +29,15 @@ type Routes []Route
 
 type ConfigSetting struct {
 	mysql Mysql
+	redis Redis
 	mlog *log.Logger
 }
 var configSetting ConfigSetting
 
-func NewRouter(mysql Mysql, mlog *log.Logger) *mux.Router {
+func NewRouter(mysql Mysql, redis Redis, mlog *log.Logger) *mux.Router {
 	configSetting = ConfigSetting {
 		mysql,
+		redis,
 		mlog,
 	}
 	router := mux.NewRouter().StrictSlash(true)

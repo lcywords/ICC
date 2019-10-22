@@ -13,8 +13,8 @@ package service
 import (
 	"encoding/json"
 	"fmt"
-	"net/http"
 	"github.com/gorilla/mux"
+	"net/http"
 )
 
 func CreateUser(w http.ResponseWriter, r *http.Request) {
@@ -58,6 +58,12 @@ func GetUserByName(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("json.marshal failed, err:", err)
 		return
 	}
+
+	//configSetting.mlog.Printf(time.Now().String())
+	//timeAfterTrigger := time.After(time.Second * 5)
+	//curTime, _ := <-timeAfterTrigger
+	//configSetting.mlog.Printf(curTime.String())
+
 	w.Write([]byte(data))
 }
 

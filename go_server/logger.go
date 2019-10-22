@@ -8,10 +8,9 @@ import (
 )
 
 func InitLog() *log.Logger {
-	logPath := "log"
-	CreateLogPath(logPath)
+	CreateLogPath(LogPath)
 	filename := time.Now().Format("2006-01-02")
-	file := logPath + "/" + filename + ".txt"
+	file := LogPath + "/" + filename + ".txt"
 	logFile, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0766)
 	if err != nil {
 		panic(err)

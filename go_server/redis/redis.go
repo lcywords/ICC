@@ -22,58 +22,60 @@ func GetRedis(RedisIp string, RedisPort int, ExpireTime int, mlog *log.Logger) *
 	redis.RedisIp = RedisIp
 	redis.RedisPort = RedisPort
 	redis.ExpireTime = ExpireTime
-	redis.ConnectRedis()
+	redis.InitRedis()
 	return &redis
 }
 
-func (s *Redis) ConnectRedis() {
+func (s *Redis) InitRedis() {
 	url := s.RedisIp + ":" + strconv.Itoa(s.RedisPort)
 	s.RedisPool = &redis.Pool{
-		MaxIdle:     10,
-		IdleTimeout: 240 * time.Second,
+		MaxIdle:     256,
+		MaxActive:   0,
+		IdleTimeout: time.Duration(120),
 		Dial: func() (redis.Conn, error) {
-			return redis.Dial("tcp", url)
+			return redis.Dial(
+				"tcp",
+				url,
+				redis.DialReadTimeout(time.Duration(1000)*time.Millisecond),
+				redis.DialWriteTimeout(time.Duration(1000)*time.Millisecond),
+				redis.DialConnectTimeout(time.Duration(1000)*time.Millisecond),
+				redis.DialDatabase(0),
+				//red.DialPassword(""),
+			)
 		},
 	}
 }
 
-func (s *Redis) SessionValid(SessionId string) bool {
-	if SessionId == "" {
-		return false
+// Exec("set","hello","world")
+// Exec("get","hello")
+func (s *Redis) ExecRedis(cmd string, key interface{}, args ...interface{}) (interface{}, error) {
+	con := s.RedisPool.Get()
+	if err := con.Err(); err != nil {
+		return nil, err
 	}
-	conn := s.RedisPool.Get()
-	defer conn.Close()
-	Future, err := redis.Int(conn.Do("EXPIRE", "session:"+SessionId, strconv.Itoa(sc.Config.ExpireTime)))
-	if err != nil {
-		log.Println("load session id error:" + SessionId)
-		return false
+	defer con.Close()
+	parmas := make([]interface{}, 0)
+	parmas = append(parmas, key)
+
+	if len(args) > 0 {
+		for _, v := range args {
+			parmas = append(parmas, v)
+		}
 	}
-	if Future == 1 {
-		return true
-	} else {
-		log.Println("session id expired:" + SessionId)
-		return false
-	}
+	return con.Do(cmd, parmas...)
 }
 
-func (s *Redis) WriteString(id string, SessionId string) {
-	c, err := redis.Dial("tcp", "127.0.0.1:6379")
+func (s *Redis) TestRedis()  {
+	// testRedis
+	s.ExecRedis("set","hello","world")
+	s.mlog.Printf("redis.ExecRedis")
+	result,err := s.ExecRedis("get","hello")
 	if err != nil {
-		fmt.Println("Connect to redis error", err)
-		return
+		fmt.Print(err.Error())
+		s.mlog.Printf("redis.ExecRedis")
 	}
-	defer c.Close()
-
-	_, err = c.Do("SET", "mykey", "superWang")
-	if err != nil {
-		fmt.Println("redis set failed:", err)
-	}
-
-	username, err := redis.String(c.Do("GET", "mykey"))
-	if err != nil {
-		fmt.Println("redis get failed:", err)
-	} else {
-		fmt.Printf("Get mykey: %v \n", username)
-	}
+	str,_:=redis.String(result,err)
+	fmt.Print(str)
+	s.mlog.Printf("redis.ExecRedis")
 }
 

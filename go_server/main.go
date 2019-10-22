@@ -12,6 +12,7 @@ package main
 
 import (
 	"go_server/mysql"
+	redis2 "go_server/redis"
 	sw "go_server/service"
 	"log"
 	"net/http"
@@ -21,10 +22,12 @@ func main() {
 	log.Printf("Server started")
 	mlog := InitLog()
 	sql := mysql.GetMysql(USERNAME, PASSWORD, NETWORK, SERVER, PORT, DATABASE, mlog)
-	//redis.GetRedis("127.0.0.1", 6379,3600, mlog)
-	router := sw.NewRouter(sql, mlog)
+	redis := redis2.GetRedis(RedisIp, RedisPort, ExpireTime, mlog)
+	redis.TestRedis()
+	router := sw.NewRouter(sql, redis, mlog)
 
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
+
 
 
