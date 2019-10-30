@@ -44,13 +44,13 @@ func GetUserByName(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("username:", a)
 	w.WriteHeader(http.StatusOK)
 	user := User{
-		Id: 123456,
+		Id: a,
 		Username: "wuligaga",
 		Email: "123@163.com",
 		Password: "123",
 		Phone: "15222223333",
 		UserStatus: 0,
-		Age: 23,
+		Age: 24,
 	}
 	data, err := json.Marshal(user)
 
