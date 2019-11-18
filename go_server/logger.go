@@ -19,6 +19,18 @@ func InitLog() *log.Logger {
 	return mlog
 }
 
+// func InitLog(path string,file string, logLevel int) {
+// 	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+// 	defer f.Close()
+// 	if err != nil {
+// 		log.Fatalf("error opening file: %v", err)
+// 	}
+// 	wrt := io.MultiWriter(os.Stdout, f)
+// 	log.SetOutput(wrt)
+// 	// Enable line numbers in logging
+// 	log.SetFlags(log.LstdFlags | log.Lshortfile)
+// }
+
 func CreateLogPath(_dir string)  {
 	exist, err := PathExists(_dir)
 	if err != nil {
