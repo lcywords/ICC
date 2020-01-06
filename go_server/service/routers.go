@@ -12,7 +12,6 @@ package service
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 	"github.com/gorilla/mux"
@@ -27,19 +26,7 @@ type Route struct {
 
 type Routes []Route
 
-type ConfigSetting struct {
-	mysql Mysql
-	redis Redis
-	mlog *log.Logger
-}
-var configSetting ConfigSetting
-
-func NewRouter(mysql Mysql, redis Redis, mlog *log.Logger) *mux.Router {
-	configSetting = ConfigSetting {
-		mysql,
-		redis,
-		mlog,
-	}
+func NewRouter() *mux.Router {
 	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes {
 		var handler http.Handler
@@ -121,5 +108,4 @@ var routes = Routes{
 		"/logout/user",
 		LogoutUser,
 	},
-
 }

@@ -3,7 +3,6 @@ package redis
 import (
 	"fmt"
 	"github.com/garyburd/redigo/redis"
-	"log"
 	"strconv"
 	"time"
 )
@@ -12,13 +11,11 @@ type Redis struct {
 	RedisIp string
 	RedisPort int
 	ExpireTime int
-	mlog *log.Logger
 	RedisPool *redis.Pool
 }
 
-func GetRedis(RedisIp string, RedisPort int, ExpireTime int, mlog *log.Logger) *Redis {
+func GetRedis(RedisIp string, RedisPort int, ExpireTime int) *Redis {
 	var redis Redis
-	redis.mlog = mlog
 	redis.RedisIp = RedisIp
 	redis.RedisPort = RedisPort
 	redis.ExpireTime = ExpireTime
@@ -68,14 +65,11 @@ func (s *Redis) ExecRedis(cmd string, key interface{}, args ...interface{}) (int
 func (s *Redis) TestRedis()  {
 	// testRedis
 	s.ExecRedis("set","hello","world")
-	s.mlog.Printf("redis.ExecRedis")
 	result,err := s.ExecRedis("get","hello")
 	if err != nil {
 		fmt.Print(err.Error())
-		s.mlog.Printf("redis.ExecRedis")
 	}
 	str,_:=redis.String(result,err)
 	fmt.Print(str)
-	s.mlog.Printf("redis.ExecRedis")
 }
 

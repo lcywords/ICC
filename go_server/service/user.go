@@ -11,7 +11,6 @@
 package service
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
@@ -43,28 +42,7 @@ func GetUserByName(w http.ResponseWriter, r *http.Request) {
 	a := vars["username"]
 	fmt.Println("username:", a)
 	w.WriteHeader(http.StatusOK)
-	user := User{
-		Id: a,
-		Username: "wuligaga",
-		Email: "123@163.com",
-		Password: "123",
-		Phone: "15222223333",
-		UserStatus: 0,
-		Age: 24,
-	}
-	data, err := json.Marshal(user)
-
-	if err != nil {
-		fmt.Println("json.marshal failed, err:", err)
-		return
-	}
-
-	//configSetting.mlog.Printf(time.Now().String())
-	//timeAfterTrigger := time.After(time.Second * 5)
-	//curTime, _ := <-timeAfterTrigger
-	//configSetting.mlog.Printf(curTime.String())
-
-	w.Write([]byte(data))
+	w.Write([]byte("hello"))
 }
 
 func LoginUser(w http.ResponseWriter, r *http.Request) {

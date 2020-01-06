@@ -1,4 +1,4 @@
-package service
+package model
 
 type Mysql interface {
 	Connect()
